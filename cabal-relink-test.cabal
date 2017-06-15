@@ -1,0 +1,25 @@
+name:                cabal-relink-test
+version:             0.1.0.0
+license:             BSD3
+author:              Niklas Hambüchen
+maintainer:          mail@nh2.me
+build-type:          Simple
+extra-source-files:  ChangeLog.md
+cabal-version:       >=1.10
+
+library
+  build-depends:       base >=4.9 && <4.10
+  hs-source-dirs:      src
+  exposed-modules:     Mymodule
+  default-language:    Haskell2010
+
+executable cabal-relink-test
+  main-is:             Main.hs
+  build-depends:       base >=4.9 && <4.10
+                     , cabal-relink-test
+  hs-source-dirs:      app
+  default-language:    Haskell2010
+
+  -- Enabling -dynamic makes ghc re-link again and again.
+
+  ghc-options:         -dynamic
